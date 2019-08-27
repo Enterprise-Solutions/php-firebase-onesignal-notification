@@ -6,7 +6,7 @@
 
   if (json_decode($json)) {
     $params = json_decode($json, true); // DECODIFICA EL JSON Y LO GUARADA EN LA VARIABLE
-    require("database.php"); // IMPORTA EL ARCHIVO CON LA CONEXION A LA DB
+    require("./config/database.php"); // IMPORTA EL ARCHIVO CON LA CONEXION A LA DB
   
     $conexion = Database::db(); // CREA LA CONEXION
     
