@@ -11,7 +11,7 @@
 
 	if(isset($params['title'])){
 
-		require_once __DIR__ . '/notify.php';
+		require_once __DIR__ . '/firebase/notify.php';
 		$notification = new Notification();
 
 		$title = isset($params['title'])?$params['title']:'';
