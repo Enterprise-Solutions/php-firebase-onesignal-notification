@@ -40,14 +40,13 @@
           $response->errors = $errors;
         }
       }
-
-      
-        
+      echo json_encode($response); // MUESTRA EL JSON GENERADO
     } else {
       class Result {}
       $response = new Result();
       $response->id = null;
       $response->errors = $errors;
+      echo json_encode($response); // MUESTRA EL JSON GENERADO
     }
     
   
@@ -55,7 +54,6 @@
   
     header('Content-Type: application/json');
   
-    echo json_encode($response); // MUESTRA EL JSON GENERADO
   } else {
     class Result {}
     $response = new Result();
