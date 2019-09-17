@@ -6,7 +6,7 @@
 
   if (json_decode($json)) {
     $params = json_decode($json, true); // DECODIFICA EL JSON Y LO GUARADA EN LA VARIABLE
-    require("./config/database.php"); // IMPORTA EL ARCHIVO CON LA CONEXION A LA DB
+    require_once("./config/database.php"); // IMPORTA EL ARCHIVO CON LA CONEXION A LA DB
   
     $conexion = Database::db(); // CREA LA CONEXION
     
@@ -18,10 +18,11 @@
     $segmento = isset($params['segment']) ? $params['segment'] : array_push($errors, '');
     $servicio = isset($_GET['id']) ? $_GET['id'] : array_push($errors, '');
     $image = isset($params['imagen']) ? $params['imagen'] : array_push($errors, '');
+    $date = isset($params['fecha']) ? $params['fecha'] : array_push($errors, '');
 
     if (empty($errors)) {
-      $query = "INSERT INTO notificaciones(titulo, descripcion, canal, servicio, image)" .
-      "VALUES (?, ?, ?, ?, ?)";
+      $query = "INSERT INTO notificaciones(titulo, descripcion, canal, servicio, imagen, fecha)" .
+      "VALUES (?, ?, ?, ?, ?, ?)";
       $sql = $conexion->prepare($query);
       class Result {}
       // var_dump($titulo, $descripcion, $segmento, $servicio, $image) or die();
@@ -32,6 +33,8 @@
         $sql->bindValue(3, $value, PDO::PARAM_STR);
         $sql->bindValue(4, $servicio, PDO::PARAM_STR);
         $sql->bindValue(5, $image, PDO::PARAM_STR);
+        $sql->bindValue(6, $date, PDO::PARAM_STR);
+
         if ($sql->execute()) {
           $response = new Result();
         } else {

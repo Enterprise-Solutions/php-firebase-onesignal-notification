@@ -23,13 +23,13 @@ class Notification{
 		$this->image_url = $imageUrl;
 	}
  
-	/* public function setAction($action){
+	public function setAction($action){
 		$this->action = $action;
 	}
  
 	public function setActionDestination($actionDestination){
 		$this->action_destination = $actionDestination;
-	}*/
+	}
  
 	public function setPayload($data){
 		$this->data = $data;
@@ -40,8 +40,8 @@ class Notification{
 		$notification['title'] = $this->title;
 		$notification['message'] = $this->message;
 		$notification['image'] = $this->image_url;
-		//$notification['action'] = $this->action;
-		//$notification['action_destination'] = $this->action_destination;
+		$notification['action'] = $this->action;
+		$notification['action_destination'] = $this->action_destination;
 		return $notification;
 	}
 }

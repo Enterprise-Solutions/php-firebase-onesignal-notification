@@ -5,6 +5,7 @@
   $json = file_get_contents('php://input'); // RECIBE EL JSON DE ANGULAR
 
   if (json_decode($json)) {
+    
     $params = json_decode($json, true); // DECODIFICA EL JSON Y LO GUARADA EN LA VARIABLE
     require("./config/database.php"); // IMPORTA EL ARCHIVO CON LA CONEXION A LA DB
   

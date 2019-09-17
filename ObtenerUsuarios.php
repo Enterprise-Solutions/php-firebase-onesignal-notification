@@ -12,7 +12,7 @@
        
     if ($search == 'false') {
         if ($param == 'all') {
-            $query = "SELECT USUARIO, NOMBRE, APELLIDO, TOKEN, ORIGEN FROM USUARIOS ORDER BY USUARIO";
+            $query = "SELECT * FROM USUARIOS ORDER BY USUARIO";
             $sql = $conexion->prepare($query);
             if ($sql->execute()) {
                 $response->data = $sql->fetchAll(PDO::FETCH_ASSOC);
@@ -20,7 +20,7 @@
                 $response = $sql->errorInfo();
             }
         } else {
-            $query = "SELECT USUARIO, NOMBRE, APELLIDO, TOKEN, ORIGEN FROM USUARIOS WHERE ORIGEN = ? ORDER BY USUARIO";
+            $query = "SELECT * FROM USUARIOS WHERE ORIGEN = ? ORDER BY USUARIO";
             $sql = $conexion->prepare($query);
             if ($sql->execute([$param])) {
                 $response->data = $sql->fetchAll(PDO::FETCH_ASSOC);
@@ -30,7 +30,7 @@
 
         }
     } else {
-        $query = "SELECT USUARIO, NOMBRE, APELLIDO, TOKEN, ORIGEN FROM USUARIOS WHERE USUARIO ILIKE ? ORDER BY USUARIO";
+        $query = "SELECT * FROM USUARIOS WHERE USUARIO ILIKE ? ORDER BY USUARIO";
         $sql = $conexion->prepare($query);
         if ($sql->execute(["%$param%"])) {
             $response->data = $sql->fetchAll(PDO::FETCH_ASSOC);
